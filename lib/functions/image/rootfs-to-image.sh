@@ -8,7 +8,14 @@ create_image() {
 	mkdir -p $DESTIMG
 
 	# stage: create file name
-	local version="${VENDOR}_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${VER/-$LINUXFAMILY/}${DESKTOP_ENVIRONMENT:+_$DESKTOP_ENVIRONMENT}"
+	local version=""
+	if [[ "WLANPI_VERSION" == "" ]]; then
+		version="${VENDOR}_${REVISION}_${BOARD^}_${RELEASE}_${BRANCH}_${VER/-$LINUXFAMILY/}${DESKTOP_ENVIRONMENT:+_$DESKTOP_ENVIRONMENT}"
+	else
+		version="${BOARD,,}-v$WLANPI_VERSION"
+		echo "VERSION=\"$WLANPI_VERSION\"" > $SDCARD/etc/wlanpi-release
+	fi
+	[[ -z "$WLANPI_RELEASE" ]] && version=${version}-$(date +"%y%m%d")
 	[[ $BUILD_DESKTOP == yes ]] && version=${version}_desktop
 	[[ $BUILD_MINIMAL == yes ]] && version=${version}_minimal
 	[[ $ROOTFS_TYPE == nfs ]] && version=${version}_nfsboot

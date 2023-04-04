@@ -1,0 +1,12 @@
+wiperf (2.0.0-beta3-4) experimental; urgency=medium
+
+  * Fixed /usr/share directory
+  * Install latest wiper_poller
+
+ -- Daniel Finimundi <dfinimundi@finimundi-build>  Sat, 01 Aug 2020 16:56:18 +0000
+
+wiperf (2.0.0-beta2-1) experimental; urgency=low
+
+  * Debianize wiperf package.
+
+ -- Daniel Finimundi <daniel@finimundi.com>  Sun, 19 Jul 2020 15:33:32 -0300
