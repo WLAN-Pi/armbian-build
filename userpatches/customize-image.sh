@@ -295,6 +295,9 @@ SetupOtherConfigFiles() {
 
 	display_alert "Copy state file" "WLAN Pi Mode" "info"
 	copy_overlay /etc/wlanpi-state -o root -g root -m 644
+
+	display_alert "Enable MOTD" "MOTD" "info"
+	chmod +x /etc/update-motd.d/*
 }
 
 UpdateMediatekFirmwareFiles() {

@@ -605,6 +605,9 @@ FAMILY_TWEAKS
 				sed -i 's/^setenv bootlogo.*/setenv bootlogo "true"/' "${SDCARD}"/boot/boot.ini
 		fi
 	fi
+
+        # disable MOTD for first boot - we want as clean 1st run as possible
+	# chmod -x "${SDCARD}"/etc/update-motd.d/*
 }
 
 install_rclocal() {
