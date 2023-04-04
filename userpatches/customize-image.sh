@@ -246,7 +246,7 @@ SetupOtherConfigFiles() {
 	fi
 
 	display_alert "Enable dynamically assigned DNS nameservers" "" "info"
-	ln -sf /etc/resolvconf/run/resolv.conf /etc/resolv.conf
+	ln -sf /run/resolvconf/resolv.conf /etc/resolv.conf
 
 	display_alert "Add our custom sudoers file" "" "info"
 	copy_overlay /etc/sudoers.d/wlanpidump -o root -g root -m 440
