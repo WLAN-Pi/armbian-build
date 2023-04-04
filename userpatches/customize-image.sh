@@ -192,7 +192,7 @@ InstallFlaskWebUI() {
 	copy_overlay /etc/nginx/nginx.conf -o root -g root -m 644
 
 	display_alert "Configure" "PHP" "info"
-	copy_overlay /etc/php/7.3/fpm/php.ini -o root -g root -m 644
+	copy_overlay /etc/php/7.4/fpm/php.ini -o root -g root -m 644
 
 	display_alert "Fix permissions" "/var/www" "info"
 	chown -R www-data:www-data /var/www
