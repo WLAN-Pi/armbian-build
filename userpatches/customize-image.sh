@@ -43,18 +43,19 @@ Main() {
 
 # This sets up all external debian repos so we can call "apt update" only once here
 SetupExternalRepos() {
-	display_alert "Include apt repo" "WLAN Pi" "info"
+	display_alert "Include apt repo" "wlanpi" "info"
 	echo "deb [trusted=yes] https://apt.fury.io/dfinimundi /" > /etc/apt/sources.list.d/wlanpi.list
 
 	display_alert "Include apt repo" "Kismet" "info"
 	wget -O - https://www.kismetwireless.net/repos/kismet-release.gpg.key | apt-key add -
-	echo 'deb https://www.kismetwireless.net/repos/apt/release/buster buster main' | tee /etc/apt/sources.list.d/kismet.list
+	echo 'deb https://www.kismetwireless.net/repos/apt/release/bullseye bullseye main' | tee /etc/apt/sources.list.d/kismet.list
 
 	apt-get update
 }
 
 # This updates wireless-regdb
 InstallWirelessRegDb() {
+        display_alert "Update wireless reg. database" "wlanpi" "info"
 	wget -O /tmp/wireless-regdb_2022.06.06-1_all.deb http://ftp.us.debian.org/debian/pool/main/w/wireless-regdb/wireless-regdb_2022.06.06-1_all.deb
 	dpkg -i /tmp/wireless-regdb_2022.06.06-1_all.deb
 	rm -f /tmp/wireless-regdb_2022.06.06-1_all.deb
@@ -297,6 +298,7 @@ SetupOtherConfigFiles() {
 }
 
 UpdateMediatekFirmwareFiles() {
+	display_alert "Update MediaTek firmware files" "wlanpi" "info"
 	copy_overlay /lib/firmware/mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin -o root -g root -m 644
 	copy_overlay /lib/firmware/mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin -o root -g root -m 644
 	copy_overlay /lib/firmware/mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin -o root -g root -m 644
