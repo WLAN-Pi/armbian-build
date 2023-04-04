@@ -106,8 +106,12 @@ function cli_entrypoint() {
 	prepare_and_config_main_build_single
 
 	if [[ -z $1 ]]; then
-		build_main
+		if [[ $KERNEL_CONFIGURE == no ]]; then
+			build_main 2>&1 | tee output/debug/wp-compile.log
+		else
+			build_main
+		fi
 	else
-		eval "$@"
+		eval "$@" 2>&1 | tee output/debug/wp-compile.log
 	fi
 }
