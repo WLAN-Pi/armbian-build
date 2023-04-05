@@ -1,13 +1,13 @@
 Source: iw
 Section: net
 Priority: optional
-Maintainer: Paride Legovini <pl@ninthfloor.org>
+Maintainer: Paride Legovini <paride@debian.org>
 Build-Depends:
- debhelper-compat (= 12),
- libnl-3-dev (>= 3.2.3-2~),
- libnl-genl-3-dev (>= 3.2.3-2~),
+ debhelper-compat (= 13),
+ libnl-3-dev,
+ libnl-genl-3-dev,
  pkg-config,
-Standards-Version: 4.4.1
+Standards-Version: 4.6.1
 Vcs-Git: https://salsa.debian.org/debian/iw.git
 Vcs-Browser: https://salsa.debian.org/debian/iw
 Homepage: https://wireless.wiki.kernel.org/en/users/documentation/iw
@@ -16,14 +16,16 @@ Rules-Requires-Root: no
 Package: iw
 Architecture: linux-any
 Multi-Arch: foreign
-Depends: ${shlibs:Depends}, ${misc:Depends}
-Recommends: crda
-Breaks: aircrack-ng (<< 1:1.0~rc2-1)
-Replaces: aircrack-ng (<< 1:1.0~rc2-1)
+Depends:
+ ${misc:Depends},
+ ${shlibs:Depends},
+Recommends:
+ wireless-regdb,
 Description: tool for configuring Linux wireless devices
- This package contains the `iw' tool which allows you to configure and show
- information about wireless networking.
+ This package contains the 'iw' command line tool which allows one to configure
+ and show information about wireless devices.
  .
- In the future iw will become the canonical command line tool for wireless
- configuration and iwconfig/wireless-tools will no longer be required. See
- /usr/share/doc/iw/README.Debian for a more detailed overview of iw.
+ iw is based on the nl80211 kernel interface and supports the majority of
+ fairly recent hardware. The old tool iwconfig, which uses Wireless Extensions
+ interface, is deprecated and it is strongly recommended to switch to iw and
+ nl80211.
