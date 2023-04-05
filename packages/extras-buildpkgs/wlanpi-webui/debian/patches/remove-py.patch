@@ -18,7 +18,7 @@ Remove setup.py to prevent compiling the python package
 -
 -readme = about["__description__"]
 -
--requires = ["flask==1.1.2", "gunicorn==20.0.4"]
+-requires = ["flask==2.0.1", "gunicorn==20.1.0"]
 -
 -setup(
 -    name=about["__title__"],
@@ -29,12 +29,12 @@ Remove setup.py to prevent compiling the python package
 -    author=about["__author__"],
 -    author_email=about["__author_email__"],
 -    url=about["__url__"],
--    python_requires="~=3.7,",
+-    python_requires="~=3.9,",
 -    license=about["__license__"],
 -    classifiers=[
 -        "Natural Language :: English",
 -        "Development Status :: 3 - Alpha",
--        "Programming Language :: Python :: 3.7",
+-        "Programming Language :: Python :: 3.9",
 -        "Intended Audience :: System Administrators",
 -        "Topic :: Utilities",
 -    ],
