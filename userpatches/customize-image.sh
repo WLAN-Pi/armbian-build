@@ -184,7 +184,7 @@ SetupWebGUI() {
 
 InstallFlaskWebUI() {
 	display_alert "Installing" "WebUI" "info"
-	pipx install --include-deps git+https://github.com/wlan-pi/wlanpi-webui@main#egg=wlanpi_webui
+	pipx install --include-deps git+https://github.com/wlan-pi/wlanpi-webui@1.0.0-b3-2#egg=wlanpi_webui
 
 	display_alert "Remove default config" "nginx" "info"
 	rm -f /etc/nginx/sites-enabled/default
