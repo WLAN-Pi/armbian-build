@@ -100,7 +100,7 @@ EOF
 
 InstallPipx() {
 	# Install a deterministic version of pipx
-	python3 -m pip install pipx==0.15.4.0
+	python3 -m pip install pipx==1.2.1
 }
 
 InstallSpeedTestPipx() {
