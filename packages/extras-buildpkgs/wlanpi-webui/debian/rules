@@ -5,6 +5,7 @@
 #export DEB_CFLAGS_MAINT_APPEND  = -Wall -pedantic
 #export DEB_LDFLAGS_MAINT_APPEND = -Wl,--as-needed
 
+export PYBUILD_NAME=wlanpi-webui
 ROOT_PATH=debian/wlanpi-webui
 SPEEDTEST_PATH=$(ROOT_PATH)/var/www/speedtest
 NGINX_PATH=$(ROOT_PATH)/etc/nginx
@@ -12,7 +13,7 @@ NGINX_SITES_PATH=$(NGINX_PATH)/sites-enabled
 SYSTEMD_PATH=$(ROOT_PATH)/lib/systemd/system
 
 %:
-	dh $@ --with systemd
+	dh $@ --with systemd --buildsystem=pybuild
 
 override_dh_auto_install:
 	mkdir -p $(SPEEDTEST_PATH) \

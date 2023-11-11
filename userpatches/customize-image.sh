@@ -29,6 +29,8 @@ Main() {
 	SetupPipxEnviro
 	InstallWirelessRegDb
 	InstallKismet
+	InstallScandump
+	InstallWiPry
 	InstallPipx
 	InstallSpeedTestPipx
 	InstallProfilerPipx
@@ -68,6 +70,19 @@ InstallKismet() {
 	usermod -aG kismet wlanpi
 }
 
+# This installs scandump
+InstallScandump() {
+	display_alert "Install scandump" "wlanpi" "info"
+	copy_overlay /usr/bin/scandump -o root -g root -m 755
+	copy_overlay /etc/sudoers.d/scandump -o root -g root -m 440
+}
+
+# This installs wipry_raw
+InstallWiPry() {
+	display_alert "Install wipry_raw" "wlanpi" "info"
+	copy_overlay /usr/bin/wipry_raw -o root -g root -m 755
+	copy_overlay /etc/sudoers.d/wipry -o root -g root -m 440
+}
 
 SetupPipxEnviro() {
 	# Setting up Pipx in a global directory so all users in sudo group can access installed packages
