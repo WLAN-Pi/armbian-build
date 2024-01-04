@@ -39,6 +39,7 @@ Main() {
 	InstallFlaskWebUI
 	SetupOtherServices
 	SetupOtherConfigFiles
+	SetupAdditionalAdapters
 	UpdateMediatekFirmwareFiles
 
 } # Main
@@ -58,9 +59,9 @@ SetupExternalRepos() {
 # This updates wireless-regdb
 InstallWirelessRegDb() {
         display_alert "Update wireless reg. database" "wlanpi" "info"
-	wget -O /tmp/wireless-regdb_2022.06.06-1_all.deb http://ftp.us.debian.org/debian/pool/main/w/wireless-regdb/wireless-regdb_2022.06.06-1_all.deb
-	dpkg -i /tmp/wireless-regdb_2022.06.06-1_all.deb
-	rm -f /tmp/wireless-regdb_2022.06.06-1_all.deb
+	wget -O /tmp/wireless-regdb_2022.06.06-2_all.deb http://ftp.us.debian.org/debian/pool/main/w/wireless-regdb/wireless-regdb_2022.06.06-2_all.deb
+	dpkg -i /tmp/wireless-regdb_2022.06.06-2_all.deb
+	rm -f /tmp/wireless-regdb_2022.06.06-2_all.deb
 	update-alternatives --set regulatory.db /lib/firmware/regulatory.db-upstream
 }
 
@@ -313,6 +314,13 @@ SetupOtherConfigFiles() {
 
 	display_alert "Enable MOTD" "MOTD" "info"
 	chmod +x /etc/update-motd.d/*
+}
+
+SetupAdditionalAdapters() {
+	display_alert "Setup additional adapters" "wlanpi" "info"
+	copy_overlay /etc/modules-load.d/mt7921u.conf -o root -g root -m 644
+	copy_overlay /etc/udev/rules.d/99-axe3000.rules -o root -g root -m 644
+	copy_overlay /etc/udev/rules.d/99-cf95x.rules -o root -g root -m 644
 }
 
 UpdateMediatekFirmwareFiles() {
