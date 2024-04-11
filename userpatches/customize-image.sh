@@ -326,7 +326,6 @@ SetupAdditionalAdapters() {
 UpdateMediatekFirmwareFiles() {
 	display_alert "Update MediaTek firmware files" "wlanpi" "info"
 	copy_overlay /lib/firmware/mediatek/BT_RAM_CODE_MT7922_1_1_hdr.bin -o root -g root -m 644
-	copy_overlay /lib/firmware/mediatek/BT_RAM_CODE_MT7961_1_2_hdr.bin -o root -g root -m 644
 	copy_overlay /lib/firmware/mediatek/WIFI_MT7922_patch_mcu_1_1_hdr.bin -o root -g root -m 644
 	copy_overlay /lib/firmware/mediatek/WIFI_MT7961_patch_mcu_1_2_hdr.bin -o root -g root -m 644
 	copy_overlay /lib/firmware/mediatek/WIFI_RAM_CODE_MT7922_1.bin -o root -g root -m 644
